@@ -1,0 +1,51 @@
+.container {
+  position: relative;
+  width: 100%;
+}
+
+
+.banner {
+  height: bq(608);
+  background-color: #000;
+  background-image: url(https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=3232840639,190973432&fm=26&gp=0.jpg);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  .banner__wrap{
+    width: bq(800);
+    margin: 0 auto;
+    .banner__title{
+        box-sizing: content-box;
+        margin-top: bq(248);
+        width: bq(678);
+        text-align: left;
+        color: #fff;
+        // padding-right: bq(550);
+        font-size: bq(44);
+        font-weight: lighter;
+        line-height: bq(59.66);
+        letter-spacing: 0;
+        color: #ffffff;
+      }
+      .banner__button{
+        display: flex;
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        margin-top: 40px;
+        width: bq(133);
+        height: bq(41);
+        line-height: bq(41);
+        font-size: bq(16);
+        text-align: center;
+        border-radius: bq(41);
+        color: #fff;
+        border: 1px solid #fff;
+      }     
+  }
+               
+}
+
+.swiperBox{
+  height: bq(342);
+}

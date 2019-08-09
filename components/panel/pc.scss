@@ -1,0 +1,43 @@
+.panel {
+  margin-top: 59px;
+
+  text-align: center;
+
+  color: #131720;
+
+  h2 {
+    font-size: bq(36);
+    margin-bottom: 15px;
+  }
+
+  .panel__desc {
+    display: flex;
+    justify-content: center;
+
+    .panel__desc__word {
+      font-size: bq(18);
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        left: -75%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: bq(83);
+        height: 1px;  
+        background-color: #b5b5b5;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        right: -75%;
+        top: 50%;
+        transform: translateY(-50%);
+        width: bq(83);
+        height: 1px;
+        background-color: #b5b5b5;
+      }
+    }
+  }
+}
