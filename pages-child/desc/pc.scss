@@ -1,53 +1,65 @@
-.wrapper{
+.wrapper {
   border-bottom: solid 1px #e2e2e2;
+
   .descicon {
-    height: bq(105);
-    display: flex;
+    // min-height: bq(105);
+    // display: flex;
+    // display: inline-block;
+    // margin: 0 auto;
+
     .item {
+      float: left;
       display: flex;
       align-items: center;
-      width: bq(273+156);
+      flex-direction: row;
+      width: bq(273+60);
       padding: bq(28) 0;
-  
+
       .icon {
         width: bq(33);
         height: bq(33);
         margin: 0 bq(31);
       }
-      
-      .i0{
+
+      .i0 {
         background-image: url('/image/icon0.png');
         background-size: 100% 100%;
         background-repeat: no-repeat;
       }
-      .i1{
+
+      .i1 {
         background-image: url('/image/icon1.png');
         background-size: 100% 100%;
         background-repeat: no-repeat;
       }
-      .i2{
+
+      .i2 {
         background-image: url('/image/icon2.png');
         background-size: 100% 100%;
         background-repeat: no-repeat;
       }
-      .i3{
+
+      .i3 {
         background-image: url('/image/icon3.png');
         background-size: 100% 100%;
         background-repeat: no-repeat;
       }
+
       .word {
-        line-height: bq(30 );
+        line-height: bq(30);
+
         .word__titile {
           color: #3175bb;
           font-size: bq(22);
         }
-  
+
         .word__desc {
+          white-space: nowrap;
           font-size: bq(18);
           color: #8f8f8f;
         }
       }
     }
   }
-  
+
 }

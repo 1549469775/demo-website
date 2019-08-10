@@ -1,13 +1,16 @@
 .panel {
-  margin-top: 59px;
-
+  padding-top: bq(59);
+  padding-bottom: bq(59);
   text-align: center;
-
   color: #131720;
+
+  .panel__wrapper {
+    overflow: visible;
+  }
 
   h2 {
     font-size: bq(36);
-    margin-bottom: 15px;
+    margin-bottom: bq(15);
   }
 
   .panel__desc {
@@ -17,26 +20,28 @@
     .panel__desc__word {
       font-size: bq(18);
       position: relative;
+      color: #4B4B4B;
 
       &::before {
         content: "";
         position: absolute;
-        left: -75%;
+        left: bq(-100, 18);
         top: 50%;
         transform: translateY(-50%);
         width: bq(83);
-        height: 1px;  
-        background-color: #b5b5b5;
+        height: 2px;
+        background-color: rgba(181, 181, 181, 1);
       }
+
       &::after {
         content: "";
         position: absolute;
-        right: -75%;
+        right: bq(-100, 18);
         top: 50%;
         transform: translateY(-50%);
-        width: bq(83);
+        width: bq(83, 18);
         height: 1px;
-        background-color: #b5b5b5;
+        background-color: rgba(181, 181, 181, 1);
       }
     }
   }

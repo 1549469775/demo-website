@@ -17,9 +17,21 @@ body {
     transform: translateY(-50%);
   }
 }
-  .m-auto {
-    margin: 0 auto;
+
+.m-auto {
+  margin: 0 auto;
+}
+
+.ls5 {
+  letter-spacing: 5px
+}
+
+
+.clearfix {
+  &::after {
+    content: "";
+    height: 0;
+    display: block;
+    clear: both;
   }
-  .ls5{
-    letter-spacing: 5px
-  }
+}
