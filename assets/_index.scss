@@ -1,0 +1,41 @@
+$red: #ff0000;
+
+html,
+body {
+  width: 100%;
+}
+
+.border-right {
+  &::after {
+    position: absolute;
+    content: " ";
+    height: 100%;
+    width: 1px;
+    background-color: #fff;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.mg-auto {
+  margin: 0 auto;
+}
+
+.clearfix {
+  &::after {
+    content: "";
+    height: 0;
+    display: block;
+    clear: both;
+  }
+}
+
+// 字体或者什么的用em,距离用%
+@function em($v, $f:16) {
+  @return $v/$f+em;
+}
+
+$designWidth:1920px;
+@function per($v) {
+  @return $v/$designWidth+'%';
+}
