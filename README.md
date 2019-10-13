@@ -25,3 +25,5 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 1
 
 2
+
+3
