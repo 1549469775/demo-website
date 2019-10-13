@@ -16,16 +16,5 @@
   }
 </script>
 <style lang="scss" scoped>
-  @media screen and (min-width: 1440px) {
-    @import "@/assets/pc-1920.scss";
-    @import "./pc.scss";
-  }
-  @media screen and (min-width: 768px) and (max-width: 1440px) {
-    @import "@/assets/pc-1366.scss";
-    @import "./pc.scss";
-  }
-  @media screen and (max-width: 768px) {
-    @import "@/assets/pc-768.scss";
-    @import "./pc.scss";
-  }
+  @import "./style.scss";
 </style>

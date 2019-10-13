@@ -1,6 +1,6 @@
 # huaqian
 
-> My terrific Nuxt.js project
+> My primo Nuxt.js project
 
 ## Build Setup
 
@@ -20,6 +20,3 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
-
-
-测试一波
