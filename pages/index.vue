@@ -1,63 +1,47 @@
 <template>
-  <b-container fluid>
+  <b-container>
+    {{ip}}
     <b-row>
-      <b-col sm='4'>1 of 2</b-col>
-      <b-col sm='2'>2 of 2</b-col>
+      <b-col md="4" sm="2">1 of 3</b-col>
+      <b-col md="4" sm="2">2 of 3</b-col>
+      <b-col md="4" sm="8">3 of 3</b-col>
     </b-row>
-    <b-alert show>Default Alert</b-alert>
-
-    <b-alert variant="success" show>Success Alert</b-alert>
-
-    <b-alert v-model="showDismissibleAlert" variant="danger" dismissible>
-      Dismissible Alert!
-    </b-alert>
-    <img src="~@images/bluedialog.png" alt="">
-    <b-alert
-      :show="dismissCountDown"
-      dismissible
-      variant="warning"
-      @dismissed="dismissCountDown=0"
-      @dismiss-count-down="countDownChanged"
-    >
-      <p>This alert will dismiss after {{ dismissCountDown }} seconds...</p>
-      <b-progress
-        variant="warning"
-        :max="dismissSecs"
-        :value="dismissCountDown"
-        height="4px"
-      ></b-progress>
-    </b-alert>
-
-    <b-button @click="showAlert" variant="info" class="m-1">
-      Show alert with count-down timer
-    </b-button>
-    <b-button @click="showDismissibleAlert=true" variant="info" class="m-1">
-      Show dismissible alert ({{ showDismissibleAlert ? 'visible' : 'hidden' }})
-    </b-button>
   </b-container>
 </template>
 
 <script>
   export default {
+    middleware: 'auth',
+    //用于请求数据，返回的数据会作用在data上
+    async asyncData({ $axios }) {
+      const ip = await $axios.$get('http://icanhazip.com');
+      return { ip }
+    },
+    //无法在内部使用this获取组件实例
+    //fetch 方法用于在渲染页面前填充应用的状态树（store）数据
+    //与 asyncData 方法类似，不同的是它不会设置组件的数据。
+    async fetch ({ store, params,$axios }) {
+      let ip = await $axios.$get('http://icanhazip.com')
+      store.commit('todos/SET_IP', ip)
+    },
+    mounted(){
+      console.log(this.$store)
+    },
     data() {
       return {
-        dismissSecs: 10,
-        dismissCountDown: 0,
-        showDismissibleAlert: false
+        ip: '0.0.0.0'
       }
     },
     methods: {
-      countDownChanged(dismissCountDown) {
-        this.dismissCountDown = dismissCountDown
-      },
-      showAlert() {
-        this.dismissCountDown = this.dismissSecs
+      async fetchSomething() {
+        const ip = await this.$axios.$get('http://icanhazip.com');
+        this.ip = ip
       }
     }
   }
 </script>
 
 <style lang='scss'>
-  @import "./style.scss";
+  @import "style";
 
 </style>
