@@ -1,12 +1,12 @@
 const path = require('path');
+console.log(process.env)
 module.exports = {
   mode: 'universal',
   /*
   ** Headers of the page
   */
   head: {
-    // process.env.npm_package_name || 
-    title: 'Beer',
+    title: process.env.npm_package_name || '',
     meta: [
       {charset: 'utf-8'},
       {name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no'},
@@ -17,6 +17,7 @@ module.exports = {
     ]
   },
   env: {
+    npm_package_name:'Beer',
     baseUrl: process.env.BASE_URL || 'http://localhost:3000'
   },
   /*
@@ -52,12 +53,7 @@ module.exports = {
   //https://axios.nuxtjs.org/setup
   axios: {
     // proxyHeaders: false
-    retry: {retries: 3},
-    proxy: true
-  },
-  proxy: {
-    // 跟下面的冲突了
-    // '/api/': 'http://api.example.com'
+    retry: {retries: 3}
   },
   styleResources: {
     // your settings here
@@ -81,6 +77,6 @@ module.exports = {
     }
   },
   serverMiddleware: [
-    {path:'/api/auth', handler:'~/api/auth'}
+    '~/api/auth'
   ]
 }

@@ -1,4 +1,5 @@
 const path = require('path');
+console.log(process.env.npm_package_name)
 module.exports = {
   mode: 'universal',
   /*
@@ -52,12 +53,7 @@ module.exports = {
   //https://axios.nuxtjs.org/setup
   axios: {
     // proxyHeaders: false
-    retry: {retries: 3},
-    proxy: true
-  },
-  proxy: {
-    // 跟下面的冲突了
-    // '/api/': 'http://api.example.com'
+    retry: {retries: 3}
   },
   styleResources: {
     // your settings here
@@ -81,6 +77,6 @@ module.exports = {
     }
   },
   serverMiddleware: [
-    {path:'/api/auth', handler:'~/api/auth'}
+    '~/api/auth'
   ]
 }

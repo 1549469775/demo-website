@@ -56,8 +56,7 @@ module.exports = {
     proxy: true
   },
   proxy: {
-    // 跟下面的冲突了
-    // '/api/': 'http://api.example.com'
+    '/api/': 'http://api.example.com'
   },
   styleResources: {
     // your settings here

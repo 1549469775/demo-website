@@ -5,8 +5,7 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    // process.env.npm_package_name || 
-    title: 'Beer',
+    title: process.env.npm_package_name || '',
     meta: [
       {charset: 'utf-8'},
       {name: 'viewport', content: 'width=device-width, initial-scale=1, shrink-to-fit=no'},
@@ -46,18 +45,13 @@ module.exports = {
   modules: [
     '@nuxtjs/style-resources',
     // 使用bootstrap-vue
-    // 'bootstrap-vue/nuxt',
+    'bootstrap-vue/nuxt',
     '@nuxtjs/axios'
   ],
   //https://axios.nuxtjs.org/setup
   axios: {
     // proxyHeaders: false
-    retry: {retries: 3},
-    proxy: true
-  },
-  proxy: {
-    // 跟下面的冲突了
-    // '/api/': 'http://api.example.com'
+    retry: {retries: 3}
   },
   styleResources: {
     // your settings here
@@ -81,6 +75,6 @@ module.exports = {
     }
   },
   serverMiddleware: [
-    {path:'/api/auth', handler:'~/api/auth'}
+    '~/api/auth'
   ]
 }

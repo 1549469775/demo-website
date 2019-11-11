@@ -1,7 +1,7 @@
 export default function (req,res,next) {
   // req 是 Node.js http request 对象
-  // console.log(req.ctx.body={code:200})
-  // console.log(res)
+  console.log(req.ctx.body={code:200})
+  console.log(req.ctx.body={code:200})
   // ctx.body={
   //   code:200
   // }
