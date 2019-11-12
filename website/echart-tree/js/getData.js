@@ -21,7 +21,7 @@
 		constructor() {}
 		static main2() {}
 		static main() {
-			MainBoCai.genJson(100);
+			// MainBoCai.genJson(100);
 		}
 		static genJson(total) {
 			var data = jiaoyisuo_JYSHelper.makeTestData(total);

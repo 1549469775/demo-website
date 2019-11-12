@@ -34,7 +34,17 @@ const option = {
     right: '1%',
     top: '8%',
     bottom: '20%',
-
+    // 缩放
+    zoom: 1,
+    diyExpand: (name, isExpand) => {
+      if (ctrlDown) {
+        return !isExpand
+      } else {
+        // 收缩
+        console.log('click');
+        return isExpand
+      }
+    },
     symbolSize: (v, param) => {
       if (str && param.name.match(str)) {
         return 18
@@ -54,7 +64,7 @@ const option = {
     orient: 'TB',
 
     expandAndCollapse: true,
-    initialTreeDepth: -1,
+    initialTreeDepth: 2,
     label: {
       normal: {
         show: true,
@@ -78,6 +88,7 @@ const option = {
           }
         }
       },
+      // 高亮悬浮
       emphasis: {
         fontSize: 20,
         fontWeight: 'bolder',
@@ -114,28 +125,3 @@ document.onkeyup = function (event) {
     ctrlDown = false;
   }
 };
-//点击事件
-const ccc = document.getElementById('ccc')
-myChart.off('click');
-myChart.on('click', function (param) {
-  if (!param.data.collapsed == false && ctrlDown) {
-    findIndex(realData, param.data.name, {
-      key: 'collapsed',
-      value: !param.data.collapsed
-    })
-    // myChart.clear();
-    myChart.setOption(option);
-  } else if (!param.data.collapsed == true) {
-    findIndex(realData, param.data.name, {
-      key: 'collapsed',
-      value: !param.data.collapsed
-    })
-    // myChart.clear();
-    myChart.setOption(option);
-  } else {
-    // myChart.clear();
-    alert(param.data.name)
-    ccc.innerHTML = param.data.name
-    myChart.setOption(option);
-  }
-});

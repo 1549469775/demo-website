@@ -36758,6 +36758,7 @@
     event: 'treeExpandAndCollapse',
     update: 'update'
   }, function (payload, ecModel) {
+
     ecModel.eachComponent({
       mainType: 'series',
       subType: 'tree',
@@ -36766,7 +36767,14 @@
       var dataIndex = payload.dataIndex;
       var tree = seriesModel.getData().tree;
       var node = tree.getNodeByDataIndex(dataIndex);
-      node.isExpand = !node.isExpand;
+      let diyExtend = ecModel.option.series[0].diyExpand;
+      console.log(ecModel.option.series[0])
+      if (diyExtend != undefined &&
+        typeof diyExtend == 'function') {
+        node.isExpand = diyExtend(node.name, node.isExpand);
+      } else {
+        node.isExpand = !node.isExpand;
+      }
     });
   });
   registerAction({
