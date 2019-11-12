@@ -1,6 +1,6 @@
 // 基于准备好的dom，初始化echarts实例
 var myChart = echarts.init(document.getElementById('main'));
-var realData = JSON.parse(MainBoCai.genJson(20));
+var realData = JSON.parse(MainBoCai.genJson(200));
 let str = '708'
 
 function findIndex(data, name, coll) {
@@ -19,6 +19,14 @@ function findIndex(data, name, coll) {
     }
   }
 }
+
+$('#forceMe').click(function () {
+  realData = realData.children[1];
+  myChart.clear();
+  option.series[0].data = [realData];
+  myChart.setOption(option);
+})
+
 // https://github.com/apache/incubator-echarts/blob/master/src/chart/tree/treeAction.js
 var ccc = document.getElementById('ccc')
 const option = {
@@ -31,8 +39,8 @@ const option = {
     roam: true,
     data: [realData],
     symbol: 'emptycircle',
-    left: '1%',
-    right: '1%',
+    left: '3%',
+    right: '3%',
     top: '8%',
     bottom: '20%',
     // 缩放
@@ -44,19 +52,22 @@ const option = {
         // 收缩
         ccc.innerHTML = name
         console.log('click');
+        $("#myModal").modal({
+          keyboard: true
+        })
         return isExpand
       }
     },
     symbolSize: (v, param) => {
       if (str && param.name.match(str)) {
-        return 18
+        return 35
       } else {
-        return 12;
+        return 20;
       }
     },
     symbol: (v, param) => {
-      if (str && param.name.match(str)) {
-        return 'arrow'
+      if (Number(param.name) % 2 == 0) {
+        return 'image://https://cn.bing.com/th?id=OIP.1e3YVW946dgy5uJH764JXwHaFj&pid=Api&rs=1'
       } else {
         return 'emptycircle';
       }
@@ -66,14 +77,15 @@ const option = {
     orient: 'TB',
 
     expandAndCollapse: true,
-    initialTreeDepth: 2,
+    initialTreeDepth: -1,
     label: {
       normal: {
         show: true,
         position: 'top',
         verticalAlign: 'middle',
         align: 'middle',
-        opacity: 0.5,
+        fontSize: 20,
+        distance: 10,
         formatter: function (param) {
           if (str && param.name.match(str)) {
             return '{a|' + param.name + '}'
@@ -84,7 +96,7 @@ const option = {
         rich: {
           a: {
             color: 'red',
-            fontSize: 20,
+            fontSize: 26,
             fontWeight: 'bolder',
             lineHeight: 10
           }
@@ -92,7 +104,8 @@ const option = {
       },
       // 高亮悬浮
       emphasis: {
-        fontSize: 20,
+        fontSize: 26,
+        distance: 10,
         fontWeight: 'bolder',
         color: 'red'
       }
@@ -101,7 +114,9 @@ const option = {
     leaves: {
       label: {
         normal: {
+          fontSize: 20,
           show: true,
+          distance: 10,
           position: 'top',
           verticalAlign: 'middle',
           align: 'middle'
