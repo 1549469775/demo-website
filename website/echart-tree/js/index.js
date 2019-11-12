@@ -19,6 +19,7 @@ function findIndex(data, name, coll) {
     }
   }
 }
+// https://github.com/apache/incubator-echarts/blob/master/src/chart/tree/treeAction.js
 var ccc = document.getElementById('ccc')
 const option = {
   tooltip: {
