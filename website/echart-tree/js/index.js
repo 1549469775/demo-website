@@ -19,7 +19,7 @@ function findIndex(data, name, coll) {
     }
   }
 }
-
+var ccc = document.getElementById('ccc')
 const option = {
   tooltip: {
     trigger: 'item',
@@ -41,6 +41,7 @@ const option = {
         return !isExpand
       } else {
         // 收缩
+        ccc.innerHTML = name
         console.log('click');
         return isExpand
       }
