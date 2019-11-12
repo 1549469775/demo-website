@@ -1,4 +1,4 @@
-// import createPersistedState from 'vuex-persistedstate'
+import createPersistedState from 'vuex-persistedstate'
 // import localforage from 'localforage'
 
 // export const plugins = [ createPersistedState({
@@ -25,13 +25,13 @@ export const mutations = {
 
 export const actions = {
   nuxtServerInit({ commit }, { req, res }) {
-    // if (req.session && req.session.user) {
-    //   const { username, password } = req.session.user
-    //   const user = {
-    //     username,
-    //     password
-    //   }
-    //   commit('SET_USER', user)
-    // }
+    if (req.session && req.session.user) {
+      const { username, password } = req.session.user
+      const user = {
+        username,
+        password
+      }
+      commit('SET_USER', user)
+    }
   },
 }
