@@ -5,3 +5,34 @@ body {
   font-size: 100%;
   background-color: #F5F5D5;
 }
+
+.panel {
+  width: 90%;
+  min-height: 100px;
+  background-color: #fff;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.panel .title {
+  font-size: 20px;
+  font-weight: bolder;
+  margin: 10px 20px;
+
+}
+
+.panel .title .sub {
+  font-size: 12px;
+}
+
+.panel a {
+  text-decoration: none;
+  color: #000;
+  font-size: 110%;
+}
+
+@media only screen and (max-width: 400px) {
+  .panel {
+    width: 100%;
+  }
+}

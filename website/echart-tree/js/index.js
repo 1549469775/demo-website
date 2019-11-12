@@ -1,5 +1,7 @@
 // 基于准备好的dom，初始化echarts实例
 var myChart = echarts.init(document.getElementById('main'));
+var realData = JSON.parse(MainBoCai.genJson(20));
+let str = '708'
 
 function findIndex(data, name, coll) {
   if (data.name == name) {
@@ -16,7 +18,6 @@ function findIndex(data, name, coll) {
       }
     }
   }
-
 }
 
 const option = {
@@ -26,37 +27,71 @@ const option = {
   },
   series: [{
     type: 'tree',
-
-    data: [data],
+    roam: true,
+    data: [realData],
     symbol: 'emptycircle',
-    left: '2%',
-    right: '2%',
+    left: '1%',
+    right: '1%',
     top: '8%',
     bottom: '20%',
-    symbolSize: 15,
-    symbol: 'emptyCircle',
 
-    orient: 'vertical',
+    symbolSize: (v, param) => {
+      if (str && param.name.match(str)) {
+        return 18
+      } else {
+        return 12;
+      }
+    },
+    symbol: (v, param) => {
+      if (str && param.name.match(str)) {
+        return 'arrow'
+      } else {
+        return 'emptycircle';
+      }
+    },
+    symbolKeepAspect: false,
+    layout: 'orthogonal',
+    orient: 'TB',
 
     expandAndCollapse: true,
-
+    initialTreeDepth: -1,
     label: {
       normal: {
+        show: true,
         position: 'top',
-        rotate: -90,
         verticalAlign: 'middle',
-        align: 'right',
-        fontSize: 9
+        align: 'middle',
+        opacity: 0.5,
+        formatter: function (param) {
+          if (str && param.name.match(str)) {
+            return '{a|' + param.name + '}'
+          } else {
+            return param.name;
+          }
+        },
+        rich: {
+          a: {
+            color: 'red',
+            fontSize: 20,
+            fontWeight: 'bolder',
+            lineHeight: 10
+          }
+        }
+      },
+      emphasis: {
+        fontSize: 20,
+        fontWeight: 'bolder',
+        color: 'red'
       }
     },
 
     leaves: {
       label: {
         normal: {
-          position: 'bottom',
-          rotate: -90,
+          show: true,
+          position: 'top',
           verticalAlign: 'middle',
-          align: 'left'
+          align: 'middle'
         }
       }
     },
@@ -84,18 +119,22 @@ const ccc = document.getElementById('ccc')
 myChart.off('click');
 myChart.on('click', function (param) {
   if (!param.data.collapsed == false && ctrlDown) {
-    findIndex(data, param.data.name, {
+    findIndex(realData, param.data.name, {
       key: 'collapsed',
       value: !param.data.collapsed
     })
+    // myChart.clear();
     myChart.setOption(option);
   } else if (!param.data.collapsed == true) {
-    findIndex(data, param.data.name, {
+    findIndex(realData, param.data.name, {
       key: 'collapsed',
       value: !param.data.collapsed
     })
+    // myChart.clear();
     myChart.setOption(option);
   } else {
+    // myChart.clear();
+    alert(param.data.name)
     ccc.innerHTML = param.data.name
     myChart.setOption(option);
   }

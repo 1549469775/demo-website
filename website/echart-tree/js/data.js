@@ -8,7 +8,7 @@ const data = {
             "value": "2000",
             "collapsed": true,
         }, {
-            "name": "2",
+            "name": "23213",
             "value": "6000",
             "collapsed": true,
             "children": [{
@@ -42,6 +42,6 @@ const data = {
         }],
         "name": "1",
         "value": "10000",
-        "collapsed": true,
+        "collapsed": false,
     }]
 }
